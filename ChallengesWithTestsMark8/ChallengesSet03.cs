@@ -35,7 +35,32 @@ namespace ChallengesWithTestsMark8
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            throw new NotImplementedException();
+            var isLower = false;
+            var isUpper = false;
+            var isNumber = false;
+            for (int i = 0; i < password.Length; i++)
+            {
+                if (char.IsLower(password[i]))
+                {
+                    isLower = true;
+                }
+                if (char.IsNumber(password[i]))
+                {
+                    isNumber = true;
+                }
+                if (char.IsUpper(password[i]))
+                {
+                    isUpper = true;
+                }
+            }
+            if (isUpper && isNumber && isLower )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public char GetFirstLetterOfString(string val)
@@ -51,6 +76,10 @@ namespace ChallengesWithTestsMark8
 
         public decimal Divide(decimal dividend, decimal divisor)
         {
+            if (divisor == 0)
+            {
+                return 0;
+            }
             return dividend / divisor;
 
         }
@@ -63,20 +92,23 @@ namespace ChallengesWithTestsMark8
 
         public int[] GetOddsBelow100()
         {
-            /* var odds = new int[50];
-             if (% 2 == 1 < 100)
-             {
-                 odds.Add();
-
-             }*/
-            throw new NotImplementedException();
+            var odds = new List<int>();
+            for (int i = 0; i < 100; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    odds.Add(i);
+                }
+            }
+            return odds.ToArray();
+           
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-            foreach (var item in words)
+            for (int i = 0; i < words.Length; i++)
             {
-                item.ToUpper();
+                words[i] = words[i].ToUpper();
             }
         }
 
