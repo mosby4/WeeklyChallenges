@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qXofaZWRBFZvGgK7S+x3fdJ4RuXPIBu6sS4zKNn4K6wY8KZdnZYzaD99KGTyg5X0UAb9RYKtgevaEykYmdMU/w==",
+  "dgSpecHash": "MxbFk43LcjJuZ2eH8pADpyZIIwJ4gWo0VsrdMTg856XA5QXlGyd7rxRgLB4GhljrD/jaNQmKgJM4M7NfTzGbQw==",
   "success": true,
-  "projectFilePath": "/Users/Rufus/Desktop/Devu Practice/WeekOneC/WeeklyChallenges/ChallengesWithTestsMark8.Tests/ChallengesWithTestsMark8.Tests.csproj",
+  "projectFilePath": "/Users/Rufus/Desktop/Devu Practice /WeekOneC/WeeklyChallenges/ChallengesWithTestsMark8.Tests/ChallengesWithTestsMark8.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/Rufus/.nuget/packages/microsoft.codecoverage/15.9.0/microsoft.codecoverage.15.9.0.nupkg.sha512",
     "/Users/Rufus/.nuget/packages/microsoft.csharp/4.0.1/microsoft.csharp.4.0.1.nupkg.sha512",

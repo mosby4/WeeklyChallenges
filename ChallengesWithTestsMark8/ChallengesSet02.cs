@@ -83,7 +83,7 @@ namespace ChallengesWithTestsMark8
             var evenSum = 0;
             for (int i = 0; i < numbers.Length; i++)
             {
-                if (numbers[i] % 2 ==0)
+                if (numbers[i] % 2 == 0)
                 {
                     evenSum += numbers[i];
                 }

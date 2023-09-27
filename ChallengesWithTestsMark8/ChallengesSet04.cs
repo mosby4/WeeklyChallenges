@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ChallengesWithTestsMark8
 {
@@ -6,47 +9,106 @@ namespace ChallengesWithTestsMark8
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null)
+            {
+                return 0;
+            }
+            var evenSum = 0;
+            var oddSum = 0;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 2 == 0)
+                {
+                    evenSum += numbers[i];
+                }
+                if (numbers[i] % 2 == 1)
+                {
+                    oddSum += numbers[i];
+                }
+
+            }
+            return evenSum - oddSum;
         }
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
-            throw new NotImplementedException();
+            List<int> myList = new List<int>() { str1.Length, str2.Length, str3.Length, str4.Length };
+            return myList.Min();
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
-            throw new NotImplementedException();
+            var numbers = new List<int>();
+            numbers.Add(number1);
+            numbers.Add(number2);
+            numbers.Add(number3);
+            numbers.Add(number4);
+
+            return numbers.Min();
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            biz.Name = "TrueCoders";
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            return(sideLength1 + sideLength2 > sideLength3 &&
+                    sideLength1+ sideLength3 > sideLength2 &&
+                    sideLength2 + sideLength3 > sideLength1); 
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            var isANumber = double.TryParse(input, out double number);
+            return isANumber;
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            var amount = objs.Length;
+            var majority = (amount / 2) + 1;
+            var count = 0;
+            foreach (var obj in objs)
+            {
+                if (objs == null)
+                {
+                    count++;
+                }
+            }
+                if (count >= majority)
+                {
+                    return true;
+                }
+                else
+                { 
+                    return false;
+                }
+            
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Length == 0)
+            {
+                return 0;
+            }
+            var n = numbers.Where(num => num % 2 == 0);
+            if (n.Count() == 0)
+            {
+                return 0;
+            }
+            return n.Average();
         }
-
+        
+        
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            if (number  == 0)
+                return 1;
+            else
+                return number * Factorial(number - 1);
         }
     }
 }
