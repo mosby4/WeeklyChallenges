@@ -75,32 +75,53 @@ namespace ChallengesWithTestsMark8
             {
                 return "";
             }
-            string blanks = "";
-            foreach (var word in words)
+            string sentence = "";
+            foreach (string word in words)
             {
-                if (word.Trim().Length> 0)
+                if (word.Trim().Length > 0)
                 {
-                    blanks += word.Trim() + "";
+                    sentence += word.Trim() + "";
                 }
-                if (blanks.Length == 0)
+                if (sentence.Length == 0)
                 {
                     return "";
                 }
-                blanks = blanks.Substring(0, blanks.Length - 1);
-                blanks += ".";
-                return blanks;
             }
-         ;
+            sentence = sentence.Substring(0, sentence.Length - 1);
+            sentence += ".";
+            return sentence;
+            
+         
         }
 
         public double[] GetEveryFourthElement(List<double> elements)
         {
-            throw new NotImplementedException();
+            if (elements == null || elements.Count == 0)
+            {
+                return new double[0];
+            }
+
+            List<double> everyFourth = new List<double>();
+            for (int i = 3; i < elements.Count; i += 4)
+            {
+                everyFourth.Add(elements[i]);
+            }
+            return everyFourth.ToArray();
         }
 
         public bool TwoDifferentElementsInArrayCanSumToTargetNumber(int[] nums, int targetNumber)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                for (int k = 0; k < nums.Length; k++)
+                {
+                    if (nums[i] + nums[k] == targetNumber)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
