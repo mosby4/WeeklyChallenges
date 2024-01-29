@@ -9,19 +9,22 @@ namespace ChallengesWithTestsMark8
     {
         public int GetNextNumberDivisibleByN(int startNumber, int n)
         {
-            if (n <= 0)
+            if (n == 0)
             {
-                throw new ArgumentException("n must be greater than 0.");
+                throw new ArgumentException("n must not be 0.");
             }
 
-            int remainder = startNumber % n;
-            if (remainder == 0)
+            // Start from startNumber and check each subsequent number
+            for (int i = startNumber; ; i++)
             {
-                return startNumber;
+                if (i % n == 0 && i > startNumber)
+                {
+                    return i;
+                }
             }
-
-            return startNumber + n - remainder;
         }
+
+
 
 
 
