@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ChallengesWithTestsMark8
 {
@@ -8,91 +9,102 @@ namespace ChallengesWithTestsMark8
     {
         public int GetNextNumberDivisibleByN(int startNumber, int n)
         {
-            var foundNextInt = 0;
-            if (startNumber == 0)
+            if (n <= 0)
             {
-                return n;
+                throw new ArgumentException("n must be greater than 0.");
             }
-            while (startNumber % n == 1)
+
+            int remainder = startNumber % n;
+            if (remainder == 0)
             {
-                startNumber++;
+                return startNumber;
             }
-                if (startNumber % n == 0)
-                {
-                    return startNumber = foundNextInt;
-                }
-            
-            return foundNextInt;
+
+            return startNumber + n - remainder;
         }
+
+
 
         public void ChangeNamesOfBusinessesWithNoRevenueTo_CLOSED(Business[] businesses)
         {
-            for (int i = 0; i < businesses.Length; i++)
+            foreach (var business in businesses)
             {
-                if (businesses[i].TotalRevenue == 0)
+                if (business.TotalRevenue == 0)
                 {
-                  businesses[i].Name = "Closed";
+                    business.Name = "CLOSED";
                 }
             }
         }
 
-        public bool IsAscendingOrder(int[] numbers)
+
+        public bool IsAscendingOrder(int[] nums)
         {
-            if (numbers == null || numbers.Length == 0)
+            if (nums == null || nums.Length == 0)
             {
                 return false;
             }
-            for (int i = 0; i < numbers.Length; i++)
+
+            for (int i = 1; i < nums.Length; i++)
             {
-                if (numbers[i] < numbers[i -1])
+                if (nums[i] < nums[i - 1])
                 {
                     return false;
                 }
             }
+
             return true;
         }
 
+
         public int SumElementsThatFollowAnEven(int[] numbers)
         {
-            if (numbers.Length == 0 || numbers == null)
+            if (numbers == null || numbers.Length == 0)
             {
                 return 0;
             }
+
             int sum = 0;
-            for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length - 1; i++)
             {
-                if (numbers[i -1] % 2 == 0)
+                if (numbers[i] % 2 == 0)
                 {
-                    sum += numbers[i];
+                    sum += numbers[i + 1];
                 }
             }
+
             return sum;
         }
 
+
         public string TurnWordsIntoSentence(string[] words)
         {
-            if (words.Length == 0 || words == null)
+            if (words == null || words.Length == 0)
             {
                 return "";
             }
-            string sentence = "";
+
+            StringBuilder sentence = new StringBuilder();
             foreach (string word in words)
             {
-                if (word.Trim().Length > 0)
+                string trimmedWord = word.Trim();
+                if (!string.IsNullOrEmpty(trimmedWord))
                 {
-                    sentence += word.Trim() + "";
-                }
-                if (sentence.Length == 0)
-                {
-                    return "";
+                    if (sentence.Length > 0)
+                    {
+                        sentence.Append(" ");
+                    }
+                    sentence.Append(trimmedWord);
                 }
             }
-            sentence = sentence.Substring(0, sentence.Length - 1);
-            sentence += ".";
-            return sentence;
-            
-         
+
+            if (sentence.Length > 0)
+            {
+                sentence.Append(".");
+            }
+
+            return sentence.ToString();
         }
+
 
         public double[] GetEveryFourthElement(List<double> elements)
         {
@@ -109,19 +121,27 @@ namespace ChallengesWithTestsMark8
             return everyFourth.ToArray();
         }
 
-        public bool TwoDifferentElementsInArrayCanSumToTargetNumber(int[] nums, int targetNumber)
+        public bool TwoDifferentElementsInArrayCanSumToTargetNumber(int[] numbers, int targetNumber)
         {
-            for (int i = 0; i < nums.Length; i++)
+            if (numbers == null || numbers.Length < 2)
             {
-                for (int k = 0; k < nums.Length; k++)
-                {
-                    if (nums[i] + nums[k] == targetNumber)
-                    {
-                        return true;
-                    }
-                }
+                return false;
             }
+
+            HashSet<int> seenNumbers = new HashSet<int>();
+
+            foreach (int number in numbers)
+            {
+                int complement = targetNumber - number;
+                if (seenNumbers.Contains(complement))
+                {
+                    return true;
+                }
+                seenNumbers.Add(number);
+            }
+
             return false;
         }
+
     }
 }
