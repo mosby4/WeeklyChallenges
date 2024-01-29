@@ -65,28 +65,25 @@ namespace ChallengesWithTestsMark8
             return isANumber;
         }
 
-        public bool MajorityOfElementsInArrayAreNull(object[] objs)
+        public bool MajorityOfElementsInArrayAreNull(object[] objects)
         {
-            var amount = objs.Length;
-            var majority = (amount / 2) + 1;
-            var count = 0;
-            foreach (var obj in objs)
+            if (objects == null || objects.Length == 0)
             {
-                if (objs == null)
+                return false;
+            }
+
+            int nullCount = 0;
+            foreach (var obj in objects)
+            {
+                if (obj == null)
                 {
-                    count++;
+                    nullCount++;
                 }
             }
-                if (count >= majority)
-                {
-                    return true;
-                }
-                else
-                { 
-                    return false;
-                }
-            
+
+            return nullCount > objects.Length / 2;
         }
+
 
         public double AverageEvens(int[] numbers)
         {
